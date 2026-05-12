@@ -63,6 +63,12 @@ Current built-in groups:
 - `sail`
 - `npm`
 
+## Shell Safety
+
+Aliases will be rendered inside a managed shell block before installation support is added.
+
+The package uses clear begin and end markers so future install and uninstall commands can update only the package-owned block.
+
 ## Development Status
 
 This repository is being built step by step as a professional Laravel package.
