@@ -10,7 +10,7 @@ final class LaravelAliasManagerServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/alias-manager.php', 'alias-manager');
+        $this->mergeConfigFrom(__DIR__.'/../config/alias-manager.php', 'alias-manager');
     }
 
     public function boot(): void
@@ -20,7 +20,7 @@ final class LaravelAliasManagerServiceProvider extends ServiceProvider
         }
 
         $this->publishes([
-            __DIR__ . '/../config/alias-manager.php' => config_path('alias-manager.php'),
+            __DIR__.'/../config/alias-manager.php' => config_path('alias-manager.php'),
         ], 'alias-manager-config');
     }
 }
