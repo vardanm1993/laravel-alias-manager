@@ -42,6 +42,21 @@ Display package information:
 php artisan alias-manager:about
 ```
 
+List available alias groups:
+
+```bash
+php artisan alias-manager:list
+```
+
+Current built-in groups:
+
+- `system`
+- `git`
+- `composer`
+- `artisan`
+- `sail`
+- `npm`
+
 ## Development Status
 
 This repository is being built step by step as a professional Laravel package.

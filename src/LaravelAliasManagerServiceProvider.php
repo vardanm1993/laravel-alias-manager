@@ -6,6 +6,7 @@ namespace Vardanm1993\LaravelAliasManager;
 
 use Illuminate\Support\ServiceProvider;
 use Vardanm1993\LaravelAliasManager\Commands\AboutCommand;
+use Vardanm1993\LaravelAliasManager\Commands\ListCommand;
 
 final class LaravelAliasManagerServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,7 @@ final class LaravelAliasManagerServiceProvider extends ServiceProvider
 
         $this->commands([
             AboutCommand::class,
+            ListCommand::class,
         ]);
     }
 }
