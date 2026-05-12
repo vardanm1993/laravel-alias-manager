@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Vardanm1993\LaravelAliasManager;
 
 use Illuminate\Support\ServiceProvider;
+use Vardanm1993\LaravelAliasManager\Commands\AboutCommand;
 
 final class LaravelAliasManagerServiceProvider extends ServiceProvider
 {
@@ -22,5 +23,9 @@ final class LaravelAliasManagerServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/alias-manager.php' => config_path('alias-manager.php'),
         ], 'alias-manager-config');
+
+        $this->commands([
+            AboutCommand::class,
+        ]);
     }
 }
