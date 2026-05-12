@@ -10,3 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Initial repository foundation.
+- Composer package skeleton with Laravel auto-discovery.
+- Pest, Pint, Larastan, Rector, and GitHub Actions quality workflow.
+- Alias catalog commands: `alias-manager:list` and `alias-manager:show`.
+- Shell rendering service with managed block markers.
+- Safe install, uninstall, preview, and doctor commands.
