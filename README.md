@@ -28,6 +28,12 @@ The package will provide installable alias groups for common Laravel and PHP wor
 
 Installation instructions will be added after the first package version is implemented.
 
+Planned package name:
+
+```bash
+composer require vardanm1993/laravel-alias-manager
+```
+
 ## Development Status
 
 This repository is being built step by step as a professional Laravel package.
