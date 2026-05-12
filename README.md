@@ -14,7 +14,7 @@ The package will provide installable alias groups for common Laravel and PHP wor
 
 - Laravel package service provider
 - Publishable configuration
-- Console commands for install, uninstall, doctor, and help
+- Console commands for about, install, uninstall, doctor, and help
 - Bash and Zsh support
 - Safe shell file detection
 - Backup before modifying shell files
@@ -32,6 +32,14 @@ Planned package name:
 
 ```bash
 composer require vardanm1993/laravel-alias-manager
+```
+
+## Usage
+
+Display package information:
+
+```bash
+php artisan alias-manager:about
 ```
 
 ## Development Status
