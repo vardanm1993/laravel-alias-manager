@@ -48,6 +48,12 @@ List available alias groups:
 php artisan alias-manager:list
 ```
 
+Show aliases for one group:
+
+```bash
+php artisan alias-manager:show git
+```
+
 Current built-in groups:
 
 - `system`
