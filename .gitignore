@@ -13,5 +13,6 @@ Thumbs.db
 /.phpunit.cache/
 /.pest/
 /coverage/
+/build/
 
 /composer.lock
