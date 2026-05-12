@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Vardanm1993\LaravelAliasManager\Commands;
 
 use Illuminate\Console\Command;
+use Vardanm1993\LaravelAliasManager\Aliases\AliasGroupRepository;
 
 final class ShowCommand extends Command
 {
@@ -12,10 +13,10 @@ final class ShowCommand extends Command
 
     protected $description = 'Show aliases for a specific Laravel Alias Manager group.';
 
-    public function handle(): int
+    public function handle(AliasGroupRepository $repository): int
     {
         $groupName = (string) $this->argument('group');
-        $group = $this->aliasGroup($groupName);
+        $group = $repository->find($groupName);
 
         if ($group === null) {
             $this->components->error(sprintf('Alias group [%s] was not found.', $groupName));
@@ -36,43 +37,5 @@ final class ShowCommand extends Command
         );
 
         return self::SUCCESS;
-    }
-
-    /**
-     * @return array{description: string, aliases: array<string, string>}|null
-     */
-    private function aliasGroup(string $name): ?array
-    {
-        $group = config(sprintf('alias-manager.groups.%s', $name));
-
-        if (! is_array($group)) {
-            return null;
-        }
-
-        $aliases = $group['aliases'] ?? [];
-
-        return [
-            'description' => is_string($group['description'] ?? null) ? $group['description'] : '',
-            'aliases' => is_array($aliases) ? $this->stringAliases($aliases) : [],
-        ];
-    }
-
-    /**
-     * @param  array<mixed>  $aliases
-     * @return array<string, string>
-     */
-    private function stringAliases(array $aliases): array
-    {
-        $normalized = [];
-
-        foreach ($aliases as $alias => $command) {
-            if (! is_string($alias) || ! is_string($command)) {
-                continue;
-            }
-
-            $normalized[$alias] = $command;
-        }
-
-        return $normalized;
     }
 }
