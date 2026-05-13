@@ -2,7 +2,7 @@
 
 A professional alias and shortcut manager for Laravel, PHP, Sail, Composer, Git, npm, pnpm, Yarn, Vite, Pest, Pint, Rector, PHPStan, and Docker workflows.
 
-> Current release: v0.1.0.
+> Current release: v0.2.0.
 
 ## Purpose
 
@@ -116,7 +116,7 @@ Before modifying an existing shell file, the package creates a timestamped `.bak
 
 ## Development Status
 
-The current development target is the next release after v0.1.0.
+The current development target is the next release after v0.2.0.
 
 Run the full local quality suite:
 
