@@ -1,6 +1,6 @@
 {
     "name": "vardanm1993/laravel-alias-manager",
-    "description": "A professional alias and shortcut manager for Laravel, PHP, Sail, Composer, Git, npm, Vite, Pest, Pint, Rector, and PHPStan workflows.",
+    "description": "A professional alias and shortcut manager for Laravel, PHP, Sail, Composer, Git, frontend, quality, and Docker workflows.",
     "type": "library",
     "license": "MIT",
     "keywords": [
@@ -12,7 +12,9 @@
         "sail",
         "composer",
         "cli",
-        "shell"
+        "shell",
+        "developer-tools",
+        "docker"
     ],
     "homepage": "https://github.com/vardanm1993/laravel-alias-manager",
     "support": {

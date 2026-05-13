@@ -10,6 +10,16 @@ A professional alias and shortcut manager for Laravel, PHP, Sail, Composer, Git,
 
 Laravel Alias Manager keeps daily terminal shortcuts organized, readable, safe, and project-aware. It ships curated alias groups, renders them into managed shell blocks, and can install or remove those blocks from Bash and Zsh profiles without touching the rest of the file.
 
+## Preview
+
+<p align="center">
+  <img src="art/preview-list.svg" alt="Laravel Alias Manager alias groups terminal preview" width="900">
+</p>
+
+<p align="center">
+  <img src="art/preview-install.svg" alt="Laravel Alias Manager managed alias block terminal preview" width="900">
+</p>
+
 ```bash
 php artisan alias-manager:install git artisan sail quality
 ```
