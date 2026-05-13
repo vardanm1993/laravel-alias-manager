@@ -1,14 +1,14 @@
 # Laravel Alias Manager
 
-A professional alias and shortcut manager for Laravel, PHP, Sail, Composer, Git, npm, Vite, Pest, Pint, Rector, and PHPStan workflows.
+A professional alias and shortcut manager for Laravel, PHP, Sail, Composer, Git, npm, pnpm, Yarn, Vite, Pest, Pint, Rector, PHPStan, and Docker workflows.
 
-> This package is preparing its first public release.
+> Current release: v0.2.0.
 
 ## Purpose
 
 Laravel Alias Manager helps developers keep terminal shortcuts organized, readable, safe, and project-aware.
 
-The package will provide installable alias groups for common Laravel and PHP workflows, including Artisan, Laravel Sail, Composer, Git, npm, Vite, Pest, Pint, Rector, PHPStan, and Larastan.
+The package will provide installable alias groups for common Laravel and PHP workflows, including Artisan, Laravel Sail, Composer, Git, npm, pnpm, Yarn, Vite, Pest, Pint, Rector, PHPStan, Larastan, and Docker.
 
 ## Features
 
@@ -90,9 +90,14 @@ Current built-in groups:
 - `system`
 - `git`
 - `composer`
+- `php`
 - `artisan`
 - `sail`
 - `npm`
+- `pnpm`
+- `yarn`
+- `quality`
+- `docker`
 
 ## Shell Safety
 
@@ -111,7 +116,7 @@ Before modifying an existing shell file, the package creates a timestamped `.bak
 
 ## Development Status
 
-The current development target is the first tagged release.
+The current development target is the next release after v0.2.0.
 
 Run the full local quality suite:
 
