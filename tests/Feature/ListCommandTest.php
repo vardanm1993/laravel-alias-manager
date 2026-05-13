@@ -13,7 +13,12 @@ it('lists available alias groups', function (): void {
         ->and($output)->toContain('system')
         ->and($output)->toContain('git')
         ->and($output)->toContain('composer')
+        ->and($output)->toContain('php')
         ->and($output)->toContain('artisan')
         ->and($output)->toContain('sail')
-        ->and($output)->toContain('npm');
+        ->and($output)->toContain('npm')
+        ->and($output)->toContain('pnpm')
+        ->and($output)->toContain('yarn')
+        ->and($output)->toContain('quality')
+        ->and($output)->toContain('docker');
 });
