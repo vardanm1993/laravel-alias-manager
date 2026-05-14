@@ -18,6 +18,50 @@ final class ShellAliasRenderer
         $lines = [
             self::BEGIN_MARKER,
             '# This block is managed by Laravel Alias Manager.',
+            '# Shortcuts run only inside a Laravel project.',
+            '',
+            '__lam_find_laravel_root() {',
+            '    local dir="$PWD"',
+            '',
+            '    while [ "$dir" != "/" ]; do',
+            '        if [ -f "$dir/artisan" ] && [ -f "$dir/composer.json" ] && [ -f "$dir/bootstrap/app.php" ]; then',
+            '            printf \'%s\n\' "$dir"',
+            '            return 0',
+            '        fi',
+            '',
+            '        dir="$(dirname "$dir")"',
+            '    done',
+            '',
+            '    return 1',
+            '}',
+            '',
+            '__lam_require_laravel_root() {',
+            '    local root',
+            '    root="$(__lam_find_laravel_root)"',
+            '',
+            '    if [ -z "$root" ]; then',
+            '        printf \'%s\n\' "Laravel Alias Manager: not inside a Laravel project." >&2',
+            '        return 1',
+            '    fi',
+            '',
+            '    printf \'%s\n\' "$root"',
+            '}',
+            '',
+            'lamroot() {',
+            '    __lam_require_laravel_root',
+            '}',
+            '',
+            'lamcd() {',
+            '    local root',
+            '    root="$(__lam_require_laravel_root)" || return 1',
+            '    cd "$root" || return 1',
+            '}',
+            '',
+            '__lam_run() {',
+            '    local root',
+            '    root="$(__lam_require_laravel_root)" || return 1',
+            '    (cd "$root" && "$@")',
+            '}',
         ];
 
         foreach ($groups as $name => $group) {
@@ -29,7 +73,7 @@ final class ShellAliasRenderer
             $lines[] = sprintf('# %s: %s', $name, $group['description']);
 
             foreach ($group['aliases'] as $alias => $command) {
-                $lines[] = sprintf("alias %s='%s'", $alias, $this->escapeSingleQuotedCommand($command));
+                $lines[] = sprintf("alias %s='%s'", $alias, $this->escapeSingleQuotedCommand('__lam_run '.$command));
             }
         }
 

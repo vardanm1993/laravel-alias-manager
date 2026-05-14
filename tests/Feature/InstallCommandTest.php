@@ -18,8 +18,8 @@ it('installs selected aliases into an explicit shell file', function (): void {
 
     expect($exitCode)->toBe(0)
         ->and($contents)->toContain(ShellAliasRenderer::BEGIN_MARKER)
-        ->and($contents)->toContain("alias gs='git status'")
-        ->and($contents)->not->toContain("alias ci='composer install'");
+        ->and($contents)->toContain("alias gs='__lam_run git status'")
+        ->and($contents)->not->toContain("alias ci='__lam_run composer install'");
 });
 
 it('fails install for unknown groups', function (): void {

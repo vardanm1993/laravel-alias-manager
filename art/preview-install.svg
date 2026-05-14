@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="720" viewBox="0 0 1100 720" role="img" aria-labelledby="title desc">
   <title id="title">Laravel Alias Manager install preview</title>
-  <desc id="desc">A terminal-style screenshot showing the rendered managed shell alias block for Sail and quality aliases.</desc>
+  <desc id="desc">A terminal-style screenshot showing the rendered guarded shell alias block for Sail and quality aliases.</desc>
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
       <stop offset="0" stop-color="#0f1720"/>
@@ -23,29 +23,27 @@
     <text x="118" y="156" fill="#8bd5ff">$ php artisan alias-manager:preview sail quality</text>
     <text x="118" y="214" fill="#94a3b8"># &gt;&gt;&gt; laravel-alias-manager &gt;&gt;&gt;</text>
     <text x="118" y="248" fill="#94a3b8"># This block is managed by Laravel Alias Manager.</text>
-    <text x="118" y="308" fill="#f7fafc"># sail: Laravel Sail shortcuts.</text>
-    <text x="118" y="342" fill="#d7dee9">alias </text>
-    <text x="178" y="342" fill="#7dd3fc">saud</text>
-    <text x="228" y="342" fill="#d7dee9">='./vendor/bin/sail up -d'</text>
-    <text x="118" y="376" fill="#d7dee9">alias </text>
-    <text x="178" y="376" fill="#7dd3fc">sa</text>
-    <text x="208" y="376" fill="#d7dee9">='./vendor/bin/sail artisan'</text>
-    <text x="118" y="410" fill="#d7dee9">alias </text>
-    <text x="178" y="410" fill="#7dd3fc">snd</text>
-    <text x="218" y="410" fill="#d7dee9">='./vendor/bin/sail npm run dev'</text>
-    <text x="118" y="444" fill="#d7dee9">alias </text>
-    <text x="178" y="444" fill="#7dd3fc">spest</text>
-    <text x="238" y="444" fill="#d7dee9">='./vendor/bin/sail pest'</text>
-    <text x="118" y="504" fill="#f7fafc"># quality: Laravel and PHP quality tool shortcuts.</text>
-    <text x="118" y="538" fill="#d7dee9">alias </text>
-    <text x="178" y="538" fill="#7dd3fc">pint</text>
-    <text x="228" y="538" fill="#d7dee9">='./vendor/bin/pint'</text>
-    <text x="118" y="572" fill="#d7dee9">alias </text>
-    <text x="178" y="572" fill="#7dd3fc">stan</text>
-    <text x="228" y="572" fill="#d7dee9">='./vendor/bin/phpstan analyse'</text>
+    <text x="118" y="282" fill="#94a3b8"># Shortcuts run only inside a Laravel project.</text>
+    <text x="118" y="326" fill="#f7fafc"># sail: Laravel Sail shortcuts.</text>
+    <text x="118" y="360" fill="#d7dee9">alias </text>
+    <text x="178" y="360" fill="#7dd3fc">saud</text>
+    <text x="228" y="360" fill="#d7dee9">='__lam_run ./vendor/bin/sail up -d'</text>
+    <text x="118" y="394" fill="#d7dee9">alias </text>
+    <text x="178" y="394" fill="#7dd3fc">saildev</text>
+    <text x="258" y="394" fill="#d7dee9">='__lam_run ./vendor/bin/sail npm run dev'</text>
+    <text x="118" y="428" fill="#d7dee9">alias </text>
+    <text x="178" y="428" fill="#7dd3fc">spest</text>
+    <text x="238" y="428" fill="#d7dee9">='__lam_run ./vendor/bin/sail pest'</text>
+    <text x="118" y="488" fill="#f7fafc"># quality: Laravel and PHP quality tool shortcuts.</text>
+    <text x="118" y="522" fill="#d7dee9">alias </text>
+    <text x="178" y="522" fill="#7dd3fc">qfix</text>
+    <text x="228" y="522" fill="#d7dee9">='__lam_run ./vendor/bin/pint'</text>
+    <text x="118" y="556" fill="#d7dee9">alias </text>
+    <text x="178" y="556" fill="#7dd3fc">qstan</text>
+    <text x="238" y="556" fill="#d7dee9">='__lam_run ./vendor/bin/phpstan analyse'</text>
     <text x="118" y="632" fill="#94a3b8"># &lt;&lt;&lt; laravel-alias-manager &lt;&lt;&lt;</text>
   </g>
 
   <rect x="714" y="178" width="246" height="52" rx="10" fill="#15202b" stroke="#334155"/>
-  <text x="837" y="211" text-anchor="middle" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700">safe to preview first</text>
+  <text x="837" y="211" text-anchor="middle" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700">Laravel-only guard</text>
 </svg>

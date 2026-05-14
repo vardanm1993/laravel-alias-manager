@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added project-aware shell guards so installed shortcuts only run inside detected Laravel projects.
+- Added readable full-stack Laravel aliases for Artisan, Sail, frontend, quality, Composer, Git, and Docker workflows.
+
 ## [0.2.1] - 2026-05-13
 
 ### Added

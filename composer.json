@@ -1,6 +1,6 @@
 {
     "name": "vardanm1993/laravel-alias-manager",
-    "description": "A professional alias and shortcut manager for Laravel, PHP, Sail, Composer, Git, frontend, quality, and Docker workflows.",
+    "description": "A professional, project-aware alias and shortcut manager for Laravel, PHP, Sail, Composer, Git, frontend, quality, and Docker workflows.",
     "type": "library",
     "license": "MIT",
     "keywords": [
@@ -13,6 +13,7 @@
         "composer",
         "cli",
         "shell",
+        "project-aware",
         "developer-tools",
         "docker"
     ],

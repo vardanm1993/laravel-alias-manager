@@ -20,7 +20,7 @@ it('installs a managed block into a shell file', function (): void {
 
     expect($contents)->toContain('export PATH=')
         ->and($contents)->toContain(ShellAliasRenderer::BEGIN_MARKER)
-        ->and($contents)->toContain("alias gs='git status'");
+        ->and($contents)->toContain("alias gs='__lam_run git status'");
 });
 
 it('replaces an existing managed block instead of duplicating it', function (): void {
@@ -44,8 +44,8 @@ it('replaces an existing managed block instead of duplicating it', function (): 
     $contents = (string) file_get_contents($file);
 
     expect(substr_count($contents, ShellAliasRenderer::BEGIN_MARKER))->toBe(1)
-        ->and($contents)->toContain("alias ci='composer install'")
-        ->and($contents)->not->toContain("alias gs='git status'");
+        ->and($contents)->toContain("alias ci='__lam_run composer install'")
+        ->and($contents)->not->toContain("alias gs='__lam_run git status'");
 });
 
 it('uninstalls only the managed block', function (): void {

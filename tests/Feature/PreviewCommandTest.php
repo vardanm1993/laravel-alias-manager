@@ -11,7 +11,7 @@ it('previews the rendered shell block', function (): void {
 
     expect($exitCode)->toBe(0)
         ->and($output)->toContain(ShellAliasRenderer::BEGIN_MARKER)
-        ->and($output)->toContain("alias gs='git status'")
+        ->and($output)->toContain("alias gs='__lam_run git status'")
         ->and($output)->toContain(ShellAliasRenderer::END_MARKER);
 });
 
