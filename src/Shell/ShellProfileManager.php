@@ -12,11 +12,12 @@ final readonly class ShellProfileManager
 
     /**
      * @param  array<string, array{description: string, aliases: array<string, string>}>  $groups
+     * @param  array<string, array{group: string, command: string}>  $daily
      */
-    public function install(string $file, array $groups, bool $backup = true): void
+    public function install(string $file, array $groups, bool $backup = true, array $daily = []): void
     {
         $contents = $this->read($file);
-        $block = $this->renderer->render($groups);
+        $block = $this->renderer->render($groups, $daily);
 
         $this->ensureParentDirectoryExists($file);
 

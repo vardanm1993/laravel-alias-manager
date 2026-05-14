@@ -10,7 +10,7 @@ it('shows aliases for a specific group', function (): void {
 
     expect($exitCode)->toBe(0)
         ->and($output)->toContain('Alias Group: git')
-        ->and($output)->toContain('Git workflow shortcuts.')
+        ->and($output)->toContain('Daily Git workflow shortcuts.')
         ->and($output)->toContain('gs')
         ->and($output)->toContain('git status')
         ->and($output)->toContain('gp')

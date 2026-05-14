@@ -12,6 +12,8 @@ it('lists available alias groups', function (): void {
         ->and($output)->toContain('Available Alias Groups')
         ->and($output)->toContain('system')
         ->and($output)->toContain('git')
+        ->and($output)->toContain('github')
+        ->and($output)->toContain('docker')
         ->and($output)->toContain('composer')
         ->and($output)->toContain('php')
         ->and($output)->toContain('artisan')
@@ -20,5 +22,6 @@ it('lists available alias groups', function (): void {
         ->and($output)->toContain('pnpm')
         ->and($output)->toContain('yarn')
         ->and($output)->toContain('quality')
-        ->and($output)->toContain('docker');
+        ->and($output)->toContain('security')
+        ->and($output)->toContain('workflow');
 });

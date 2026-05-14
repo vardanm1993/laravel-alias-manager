@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added DAM-style alias names, including presets for core, fullstack, Sail, frontend, ops, and pro workflows.
+- Added alias search, preset listing, and daily favorites commands.
+- Added daily favorites rendering into the managed shell block.
+- Added GitHub CLI, security, and workflow alias groups.
+
+### Changed
+
+- Render installed shortcuts as shell functions so compound commands and arguments work more reliably.
+
 ## [0.3.0] - 2026-05-14
 
 ### Added

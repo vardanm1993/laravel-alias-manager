@@ -12,8 +12,9 @@ final class ShellAliasRenderer
 
     /**
      * @param  array<string, array{description: string, aliases: array<string, string>}>  $groups
+     * @param  array<string, array{group: string, command: string}>  $daily
      */
-    public function render(array $groups): string
+    public function render(array $groups, array $daily = []): string
     {
         $lines = [
             self::BEGIN_MARKER,
@@ -57,10 +58,17 @@ final class ShellAliasRenderer
             '    cd "$root" || return 1',
             '}',
             '',
-            '__lam_run() {',
+            '__lam_run_cmd() {',
+            '    local command_text="$1"',
             '    local root',
+            '    shift',
+            '',
             '    root="$(__lam_require_laravel_root)" || return 1',
-            '    (cd "$root" && "$@")',
+            '    if [ "$#" -eq 0 ]; then',
+            '        (cd "$root" && eval "$command_text")',
+            '    else',
+            '        (cd "$root" && eval "$command_text \"\$@\"")',
+            '    fi',
             '}',
         ];
 
@@ -73,10 +81,29 @@ final class ShellAliasRenderer
             $lines[] = sprintf('# %s: %s', $name, $group['description']);
 
             foreach ($group['aliases'] as $alias => $command) {
-                $lines[] = sprintf("alias %s='%s'", $alias, $this->escapeSingleQuotedCommand('__lam_run '.$command));
+                $lines[] = sprintf('%s() {', $alias);
+                $lines[] = sprintf("    __lam_run_cmd '%s' \"\$@\"", $this->escapeSingleQuotedCommand($command));
+                $lines[] = '}';
             }
         }
 
+        $lines[] = '';
+        $lines[] = '# daily: User-selected daily favorites.';
+        $lines[] = 'lamdaily() {';
+
+        if ($daily === []) {
+            $lines[] = '    printf \'%s\n\' "Laravel Alias Manager: no daily favorites configured."';
+        } else {
+            foreach (array_keys($daily) as $alias) {
+                $lines[] = sprintf('    %s || return $?', $alias);
+            }
+        }
+
+        $lines[] = '}';
+        $lines[] = '';
+        $lines[] = 'daily() {';
+        $lines[] = '    lamdaily "$@"';
+        $lines[] = '}';
         $lines[] = '';
         $lines[] = self::END_MARKER;
 

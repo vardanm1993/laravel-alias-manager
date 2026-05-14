@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="720" viewBox="0 0 1100 720" role="img" aria-labelledby="title desc">
-  <title id="title">Laravel Alias Manager alias group preview</title>
-  <desc id="desc">A terminal-style screenshot showing the alias-manager list command and available alias groups.</desc>
+  <title id="title">Laravel Alias Manager preset preview</title>
+  <desc id="desc">A terminal-style screenshot showing alias-manager presets and alias search.</desc>
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
       <stop offset="0" stop-color="#10151f"/>
@@ -19,28 +19,26 @@
   <circle cx="168" cy="88" r="8" fill="#28c840"/>
   <text x="550" y="94" text-anchor="middle" fill="#c9d4e5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15">laravel-alias-manager</text>
 
-  <text x="118" y="162" fill="#8bd5ff" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18">$ php artisan alias-manager:list</text>
-  <text x="118" y="218" fill="#f7fafc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24" font-weight="700">Available Alias Groups</text>
+  <text x="118" y="162" fill="#8bd5ff" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18">$ php artisan alias-manager:presets</text>
+  <text x="118" y="218" fill="#f7fafc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24" font-weight="700">Available Alias Presets</text>
 
   <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18">
-    <text x="118" y="272" fill="#7dd3fc">system</text>
-    <text x="258" y="272" fill="#d7dee9">Laravel project terminal helpers.</text>
-    <text x="118" y="316" fill="#7dd3fc">git</text>
-    <text x="258" y="316" fill="#d7dee9">Git workflow shortcuts.</text>
-    <text x="118" y="360" fill="#7dd3fc">composer</text>
-    <text x="258" y="360" fill="#d7dee9">Composer package manager shortcuts.</text>
-    <text x="118" y="404" fill="#7dd3fc">artisan</text>
-    <text x="258" y="404" fill="#d7dee9">Laravel Artisan shortcuts.</text>
-    <text x="118" y="448" fill="#7dd3fc">sail</text>
-    <text x="258" y="448" fill="#d7dee9">Laravel Sail shortcuts.</text>
-    <text x="118" y="492" fill="#7dd3fc">npm</text>
-    <text x="258" y="492" fill="#d7dee9">npm and Vite shortcuts.</text>
-    <text x="118" y="536" fill="#7dd3fc">quality</text>
-    <text x="258" y="536" fill="#d7dee9">Laravel and PHP quality tool shortcuts.</text>
-    <text x="118" y="580" fill="#7dd3fc">docker</text>
-    <text x="258" y="580" fill="#d7dee9">Docker Compose shortcuts for local services.</text>
+    <text x="118" y="272" fill="#7dd3fc">core</text>
+    <text x="258" y="272" fill="#d7dee9">Git, Composer, PHP, Artisan, and system helpers.</text>
+    <text x="118" y="316" fill="#7dd3fc">fullstack</text>
+    <text x="258" y="316" fill="#d7dee9">Laravel, frontend, quality, security, and workflow.</text>
+    <text x="118" y="360" fill="#7dd3fc">sail</text>
+    <text x="258" y="360" fill="#d7dee9">Sail-first Laravel development.</text>
+    <text x="118" y="404" fill="#7dd3fc">frontend</text>
+    <text x="258" y="404" fill="#d7dee9">npm, pnpm, Yarn, and Vite.</text>
+    <text x="118" y="448" fill="#7dd3fc">ops</text>
+    <text x="258" y="448" fill="#d7dee9">Docker, GitHub CLI, security, and workflow.</text>
+    <text x="118" y="492" fill="#7dd3fc">pro</text>
+    <text x="258" y="492" fill="#d7dee9">Everything for full-stack Laravel work.</text>
+    <text x="118" y="548" fill="#8bd5ff">$ php artisan alias-manager:search route</text>
+    <text x="118" y="586" fill="#d7dee9">routes  artisan  php artisan route:list</text>
   </g>
 
   <rect x="740" y="202" width="220" height="52" rx="10" fill="#15202b" stroke="#334155"/>
-  <text x="850" y="235" text-anchor="middle" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700">project-aware</text>
+  <text x="850" y="235" text-anchor="middle" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700">DAM-style</text>
 </svg>

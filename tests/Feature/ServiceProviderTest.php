@@ -10,5 +10,7 @@ it('registers the package service provider', function (): void {
 
 it('loads the package configuration', function (): void {
     expect(config('alias-manager.shells'))->toBe(['bash', 'zsh'])
-        ->and(config('alias-manager.backup'))->toBeTrue();
+        ->and(config('alias-manager.backup'))->toBeTrue()
+        ->and(config('alias-manager.daily'))->toBe([])
+        ->and(config('alias-manager.presets'))->toHaveKey('pro');
 });

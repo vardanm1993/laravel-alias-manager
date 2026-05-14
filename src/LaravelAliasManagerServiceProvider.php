@@ -6,10 +6,13 @@ namespace Vardanm1993\LaravelAliasManager;
 
 use Illuminate\Support\ServiceProvider;
 use Vardanm1993\LaravelAliasManager\Commands\AboutCommand;
+use Vardanm1993\LaravelAliasManager\Commands\DailyCommand;
 use Vardanm1993\LaravelAliasManager\Commands\DoctorCommand;
 use Vardanm1993\LaravelAliasManager\Commands\InstallCommand;
 use Vardanm1993\LaravelAliasManager\Commands\ListCommand;
+use Vardanm1993\LaravelAliasManager\Commands\PresetsCommand;
 use Vardanm1993\LaravelAliasManager\Commands\PreviewCommand;
+use Vardanm1993\LaravelAliasManager\Commands\SearchCommand;
 use Vardanm1993\LaravelAliasManager\Commands\ShowCommand;
 use Vardanm1993\LaravelAliasManager\Commands\UninstallCommand;
 use Vardanm1993\LaravelAliasManager\Shell\ShellAliasRenderer;
@@ -37,10 +40,13 @@ final class LaravelAliasManagerServiceProvider extends ServiceProvider
 
         $this->commands([
             AboutCommand::class,
+            DailyCommand::class,
             DoctorCommand::class,
             InstallCommand::class,
             ListCommand::class,
+            PresetsCommand::class,
             PreviewCommand::class,
+            SearchCommand::class,
             ShowCommand::class,
             UninstallCommand::class,
         ]);

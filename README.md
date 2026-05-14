@@ -6,22 +6,22 @@
 [![License](https://img.shields.io/packagist/l/vardanm1993/laravel-alias-manager.svg?style=flat-square)](LICENSE)
 [![PHP Version](https://img.shields.io/packagist/dependency-v/vardanm1993/laravel-alias-manager/php?style=flat-square)](composer.json)
 
-A professional, project-aware alias and shortcut manager for Laravel, PHP, Sail, Composer, Git, npm, pnpm, Yarn, Vite, Pest, Pint, Rector, PHPStan, and Docker workflows.
+A professional, project-aware alias and shortcut manager for Laravel, PHP, Sail, Composer, Git, GitHub CLI, npm, pnpm, Yarn, Vite, Pest, Pint, Rector, PHPStan, Docker, security, and daily full-stack workflows.
 
-Laravel Alias Manager keeps daily terminal shortcuts organized, readable, safe, and project-aware. It ships curated full-stack Laravel alias groups, renders them into guarded managed shell blocks, and can install or remove those blocks from Bash and Zsh profiles without touching the rest of the file.
+Laravel Alias Manager keeps daily terminal shortcuts organized, readable, safe, and project-aware. It ships DAM-style full-stack Laravel aliases, install presets, searchable catalogs, daily favorites, guarded shell functions, and safe Bash/Zsh profile installation without touching the rest of the file.
 
 ## Preview
 
 <p align="center">
-  <img src="art/preview-list.svg" alt="Laravel Alias Manager alias groups terminal preview" width="900">
+  <img src="art/preview-list.svg" alt="Laravel Alias Manager presets and search terminal preview" width="900">
 </p>
 
 <p align="center">
-  <img src="art/preview-install.svg" alt="Laravel Alias Manager managed alias block terminal preview" width="900">
+  <img src="art/preview-install.svg" alt="Laravel Alias Manager managed shell function block terminal preview" width="900">
 </p>
 
 ```bash
-php artisan alias-manager:install git artisan sail quality
+php artisan alias-manager:install --preset=pro --daily=gst --daily=routes --daily=qa
 ```
 
 ```text
@@ -29,27 +29,40 @@ php artisan alias-manager:install git artisan sail quality
 # This block is managed by Laravel Alias Manager.
 # Shortcuts run only inside a Laravel project.
 
-# git: Git workflow shortcuts.
-alias gs='__lam_run git status'
-alias gco='__lam_run git checkout'
-alias gpsu='__lam_run git push --set-upstream origin HEAD'
+# git: Daily Git workflow shortcuts.
+gst() {
+    __lam_run_cmd 'git status -sb' "$@"
+}
 
 # sail: Laravel Sail shortcuts.
-alias saud='__lam_run ./vendor/bin/sail up -d'
-alias saildev='__lam_run ./vendor/bin/sail npm run dev'
-alias sailfreshseed='__lam_run ./vendor/bin/sail artisan migrate:fresh --seed'
+sup() {
+    __lam_run_cmd './vendor/bin/sail up -d' "$@"
+}
+
+snrd() {
+    __lam_run_cmd './vendor/bin/sail npm run dev' "$@"
+}
+
+lamdaily() {
+    gst || return $?
+    routes || return $?
+    qa || return $?
+}
 
 # <<< laravel-alias-manager <<<
 ```
 
 ## Features
 
-- Curated, easy-to-remember aliases for full-stack Laravel, PHP, frontend, Sail, quality, and Docker workflows
+- DAM-style aliases for full-stack Laravel, PHP, frontend, Sail, quality, Docker, GitHub CLI, security, and project workflow commands
+- Install presets such as `core`, `fullstack`, `sail`, `frontend`, `ops`, and `pro`
+- Search command for alias names, groups, and command text
+- Daily favorites rendered into `daily` / `lamdaily`
 - Project-aware shell guard that detects a Laravel root before any shortcut runs
 - Shortcuts run from the Laravel project root, even when called from nested directories
 - Laravel package auto-discovery
 - Publishable configuration
-- Console commands for listing, showing, previewing, installing, uninstalling, and diagnosing aliases
+- Console commands for listing, showing, searching, previewing, installing, uninstalling, presets, daily favorites, and diagnostics
 - Safe Bash and Zsh profile detection
 - Timestamped shell-file backups before writes
 - Reversible managed shell blocks with stable begin and end markers
@@ -77,22 +90,42 @@ Inspect the available groups:
 php artisan alias-manager:list
 ```
 
+Inspect install presets:
+
+```bash
+php artisan alias-manager:presets
+php artisan alias-manager:presets pro
+```
+
+Search aliases:
+
+```bash
+php artisan alias-manager:search route
+php artisan alias-manager:search sail
+```
+
 Preview aliases before writing anything:
 
 ```bash
-php artisan alias-manager:preview git artisan sail
+php artisan alias-manager:preview --preset=pro --daily=gst --daily=routes --daily=qa
 ```
 
-Install selected aliases into the detected shell profile:
+Install a preset into the detected shell profile:
 
 ```bash
-php artisan alias-manager:install git artisan sail npm quality
+php artisan alias-manager:install --preset=pro --daily=gst --daily=routes --daily=qa
 ```
 
-Install into a specific shell file:
+Install selected groups into a specific shell file:
 
 ```bash
-php artisan alias-manager:install git composer --file=/path/to/.zshrc
+php artisan alias-manager:install git composer artisan --file=/path/to/.zshrc
+```
+
+Inspect daily favorites:
+
+```bash
+php artisan alias-manager:daily gst routes qa
 ```
 
 Remove the managed block:
@@ -111,17 +144,31 @@ php artisan alias-manager:doctor
 
 | Group | Focus |
 | --- | --- |
-| `system` | Laravel project-root terminal helpers |
-| `git` | Status, branches, diffs, commits, pulls, pushes, and stashes |
+| `system` | Project-root terminal helpers |
+| `git` | Daily Git status, add, commit, diff, log, pull, push, and stash |
+| `github` | GitHub CLI pull request and Actions shortcuts |
+| `docker` | Docker and Docker Compose lifecycle, logs, exec, and cleanup |
 | `composer` | Install, update, require, remove, autoload, and package inspection |
 | `php` | PHP runtime inspection and Laravel Tinker |
-| `artisan` | Serve, test, migrate, seed, queue, schedule, cache, routes, storage, logs, and make commands |
-| `sail` | Sail up/down, shell, Artisan, Composer, npm, pnpm, Yarn, PHP, Pest, Pint, PHPStan, and logs |
-| `npm` | npm install, dev, build, preview, test, lint, format, audit, and outdated |
+| `artisan` | Artisan, routes, database, queues, logs, storage, cache, and generators |
+| `sail` | Sail lifecycle, Artisan, generators, Composer, npm, pnpm, Yarn, PHP, Pest, Pint, Rector, PHPStan, and logs |
+| `npm` | npm and Vite install, dev, build, typecheck, lint, format, preview, audit, and outdated |
 | `pnpm` | pnpm install, dev, build, preview, test, lint, format, add, and remove |
 | `yarn` | Yarn install, dev, build, preview, test, lint, format, add, and remove |
-| `quality` | Pest, Pint, PHPStan, Rector, and Composer quality with readable `q*` aliases |
-| `docker` | Docker Compose up, down, restart, logs, ps, build, exec, PHP, and Artisan |
+| `quality` | Pest, Pint, Rector, PHPStan, and full quality pipelines |
+| `security` | `.env`, app key, Composer audit, npm audit, and writable path checks |
+| `workflow` | Project doctor, start, stop, dev flow, and check-all shortcuts |
+
+## Presets
+
+| Preset | Groups |
+| --- | --- |
+| `core` | `system`, `git`, `composer`, `php`, `artisan` |
+| `fullstack` | Core Laravel plus frontend, quality, security, and workflow |
+| `sail` | Sail-first Laravel development |
+| `frontend` | `npm`, `pnpm`, `yarn` |
+| `ops` | `docker`, `github`, `security`, `workflow` |
+| `pro` | Everything |
 
 Show the exact aliases in any group:
 
@@ -129,37 +176,31 @@ Show the exact aliases in any group:
 php artisan alias-manager:show sail
 ```
 
-## Sail Examples
+## DAM-Style Examples
 
 ```bash
-saud      # ./vendor/bin/sail up -d
-sd        # ./vendor/bin/sail down
-sshell    # ./vendor/bin/sail shell
-sa        # ./vendor/bin/sail artisan
-samfs     # ./vendor/bin/sail artisan migrate:fresh --seed
-snd       # ./vendor/bin/sail npm run dev
-spnpd     # ./vendor/bin/sail pnpm dev
-spest     # ./vendor/bin/sail pest
-spint     # ./vendor/bin/sail pint
+gst             # git status -sb
+routes          # php artisan route:list
+dbfresh         # php artisan migrate:fresh --seed
+mkc User        # php artisan make:controller User
+sup             # ./vendor/bin/sail up -d
+sdown           # ./vendor/bin/sail down
+sart migrate    # ./vendor/bin/sail artisan migrate
+smfs            # ./vendor/bin/sail artisan migrate:fresh --seed
+snrd            # ./vendor/bin/sail npm run dev
+spint           # ./vendor/bin/sail php vendor/bin/pint
+rcheck          # ./vendor/bin/rector process --dry-run
+qa              # Pint, Rector dry-run, PHPStan, and Pest
+secenv          # check .env safety
+doctor          # php artisan about
+daily           # run configured daily favorites
 ```
 
-## Readable Examples
-
-```bash
-lserve          # php artisan serve
-lfreshseed      # php artisan migrate:fresh --seed
-lroutes         # php artisan route:list
-llog            # tail -f storage/logs/laravel.log
-sailupd         # ./vendor/bin/sail up -d
-saildev         # ./vendor/bin/sail npm run dev
-ndev            # npm run dev
-qfix            # ./vendor/bin/pint
-quality         # composer quality
-```
+Older `v0.3` aliases such as `lserve`, `lfreshseed`, `saildev`, and `qfix` are still available as compatibility aliases.
 
 ## Shell Safety
 
-Aliases are rendered inside a managed shell block:
+Shortcuts are rendered as shell functions inside a managed shell block:
 
 ```text
 # >>> laravel-alias-manager >>>
@@ -175,13 +216,15 @@ The managed block includes a small shell guard. Before a shortcut runs, it searc
 Laravel Alias Manager: not inside a Laravel project.
 ```
 
-When a Laravel project is found, the shortcut runs from that project root. That means `lroutes`, `saildev`, or `qfix` work from nested directories like `app/Http/Controllers`, but they do not run from unrelated folders.
+When a Laravel project is found, the shortcut runs from that project root. That means `routes`, `snrd`, or `qa` work from nested directories like `app/Http/Controllers`, but they do not run from unrelated folders.
 
-The block also provides two helpers:
+The block also provides helpers:
 
 ```bash
 lamroot   # print the detected Laravel project root
 lamcd     # cd to the detected Laravel project root
+daily     # run daily favorites
+lamdaily  # same as daily
 ```
 
 Install and uninstall commands only replace or remove the package-owned block. Existing aliases, exports, functions, prompts, and custom shell configuration outside that block are left untouched.
@@ -212,6 +255,18 @@ php artisan alias-manager:install project
 ```
 
 Custom aliases are guarded the same way as the built-in catalog, so they only run inside a detected Laravel project.
+
+You can configure daily favorites:
+
+```php
+'daily' => ['gst', 'routes', 'qa'],
+```
+
+Or pass them during install:
+
+```bash
+php artisan alias-manager:install --preset=pro --daily=gst --daily=routes --daily=qa
+```
 
 ## Development
 
